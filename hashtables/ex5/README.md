@@ -12,6 +12,15 @@ paths = [
     "/home/davidlightman/foo.txt",
     "/bin/su"
 ]
+# string reversier
+# create a variable current that ''
+# create a variable boolean that says i got my current
+# loop through each letter add it to that string
+# if the item / addit to the cache ass the key 
+# save copy as a variable 
+# change boolean varaiable to true and loop through the rest 
+# ill set the current back to ''
+# if the item > len of the string than the coppy of the current key = the now current
 
 queries = [
     "ls",
