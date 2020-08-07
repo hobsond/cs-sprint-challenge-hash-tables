@@ -6,21 +6,26 @@ def reverser(s):
     return s[::-1]
 
 def seeder(files):
-    current = ''
-# loop through each letter add it to that string
     for i in files:
+        j = i.split("/")
+        x = j[-1]
+        if x not in cache:
+            cache[x] = [i]
+        else:
+            cache[x].append(i)
         
-        i.split("/")
     
 def finder(files, queries):
     """
     YOUR CODE HERE
     """
     seeder(files)
+    
     x = []
     for i in queries:
         if i  in cache:
-            x.append(cache[i][0])
+            for h in cache[i]:
+                x.append(h)
         
     # Your code here
     # string reversier
@@ -40,6 +45,7 @@ if __name__ == "__main__":
     files = [
         '/bin/foo.txt',
         '/bin/bar',
+        '/bin/foo.txt',
         '/usr/bin/baz'
     ]
     queries = [
