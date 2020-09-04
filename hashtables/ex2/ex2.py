@@ -6,18 +6,19 @@ class Ticket:
         self.destination = destination
 
 
-def reconstruct_trip(tickets, length,cache=None,history=None,count =None,hash=None):
+def reconstruct_trip(tickets, length,cache=None,history=None,count =None,):
     """
     YOUR CODE HERE
     """
     # Your code here
     # loop through the list of tickedts
-    
+    # count keep track of the amount of items in the history
     if count is None:
         count = 0
-        
+    # iniriate the cache 
     if cache is None:
         cache = {}
+        # add the tickets into the cache
         for i in tickets:
             if i['source'] == "NONE":
                 cache['start'] = i['destination']
@@ -27,44 +28,37 @@ def reconstruct_trip(tickets, length,cache=None,history=None,count =None,hash=No
                 continue
             
             cache[i['source']] = i['destination']
-    
-    if hash is None:
-        hash= set()    
-    
+   
     if history is None:
         history = []
     
-    if count == length:
+    if count == length + 1:
+        
+        history = history[1:-1]
         print(history)
-    print(count)
-    
-    t = [i for i in cache.items()]
-    
-    choice = random.choice(t)
-    while choice in hash:
-        choice = random.choice(t)
-    
-    # print(choice)
-    
+        return
+        
+
     if len(history) == 0:
         history.append('start')
-        print(f"{history} plugged in")
-        hash.add('start')
         count +=1
         
-        
+            
     if len(history) > 0:
         x = history[-1]
         y = cache[x]
-        # print(f'this is my choice {choice[0]}')
-        # print(f'this would be the dest {y}')
-        # print(f'this would be this is the source {x}')
-        if choice[0] == y:
-            history.append(choice[0])
-            hash.add(choice[0])
-            count +=1
-        else:
-            reconstruct_trip(tickets,length,cache,history,count,hash)
+        history.append(y)
+        count += 1
+        
+    reconstruct_trip(tickets,length,cache,history,count)
+        
+    
+        
+    
+        
+        
+        
+        
 
 
 tickets = [
@@ -82,4 +76,4 @@ tickets = [
 ]
 
 
-reconstruct_trip(tickets,9)
+reconstruct_trip(tickets,len(tickets))
