@@ -9,6 +9,8 @@ def intersection(arrays):
     # create the dictionary 
     # we loop throuh arrays 
     # which we will h
+    
+    
     for i in arrays:
         for num in i:
             if num not in cache:
