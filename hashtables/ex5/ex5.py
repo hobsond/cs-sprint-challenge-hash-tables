@@ -1,10 +1,6 @@
 # Your code here
 
 cache={}
-
-def reverser(s):
-    return s[::-1]
-
 def seeder(files):
     for i in files:
         j = i.split("/")
